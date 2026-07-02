@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Design tokens — always-dark theme built on the validated dark dataviz palette */
+:root {
+  color-scheme: dark;
+
+  --surface-1: #1a1a1f;
+  --plane: #0b0b10;
+  --text-primary: #ffffff;
+  --text-secondary: #c3c2c9;
+  --text-muted: #8a8892;
+  --gridline: #2c2c32;
+  --baseline: #38383f;
+  --border-hairline: rgba(255, 255, 255, 0.08);
+
+  --series-1: #3987e5; /* blue */
+  --series-2: #199e70; /* aqua */
+  --series-3: #c98500; /* yellow */
+  --series-5: #9085e9; /* violet */
+
+  --status-good: #0ca30c;
+  --status-warning: #fab219;
+  --status-serious: #ec835a;
+  --status-critical: #e05252;
+  --delta-good-text: #2fbf5f;
+}
+
+body {
+  color: var(--text-primary);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  background-color: var(--plane);
+  /* Subtle brand glow — dark, not flat */
+  background-image:
+    radial-gradient(60rem 40rem at 85% -10%, rgba(57, 135, 229, 0.14), transparent 60%),
+    radial-gradient(50rem 35rem at -10% 25%, rgba(144, 133, 233, 0.10), transparent 60%),
+    radial-gradient(45rem 45rem at 50% 120%, rgba(25, 158, 112, 0.07), transparent 60%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+.card {
+  @apply rounded-2xl border;
+  border-color: var(--border-hairline);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0) 45%),
+    color-mix(in srgb, var(--surface-1) 88%, transparent);
+  backdrop-filter: blur(10px);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.04) inset,
+    0 10px 30px -14px rgba(0, 0, 0, 0.6);
+  transition: border-color 160ms ease, transform 160ms ease;
+}
+
+.card:hover {
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Recessive scrollbars to match the dark chrome */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--baseline);
+  border-radius: 8px;
+  border: 2px solid var(--plane);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Focus visibility on dark */
+:focus-visible {
+  outline: 2px solid var(--series-1);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+::selection {
+  background: rgba(57, 135, 229, 0.35);
+}

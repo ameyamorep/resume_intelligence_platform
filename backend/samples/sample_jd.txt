@@ -1,0 +1,15 @@
+Senior Software Engineer - Data Platform
+
+We are looking for an engineer to build our data platform.
+
+Requirements:
+- 3+ years of experience in Python backend development
+- Strong experience with FastAPI or Django and REST APIs
+- Proficiency with SQL and PostgreSQL
+- Experience with Docker and Kubernetes
+- Must have AWS experience
+
+Nice to have:
+- React or Next.js exposure
+- Terraform, CI/CD pipelines
+- Kafka experience preferred

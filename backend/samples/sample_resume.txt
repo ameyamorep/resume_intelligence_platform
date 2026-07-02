@@ -1,0 +1,32 @@
+Jane Candidate
+Sydney, NSW | jane.candidate@email.com | +61 400 123 456
+linkedin.com/in/janecandidate | github.com/janecand
+
+Summary
+Software engineer with 3 years building data-heavy web products in Python and React.
+
+Experience
+Software Engineer | Acme Analytics
+Jul 2022 - Present
+- Built a FastAPI microservice processing 2M events/day, reducing pipeline latency by 40%
+- Led migration of the reporting dashboard to React and TypeScript, improving load time by 60%
+- Mentored 2 interns and coordinated a 4-person feature squad
+
+Junior Developer | DataWorks
+Jan 2021 - Jun 2022
+- Developed ETL jobs in Python and SQL for a Snowflake warehouse
+- Responsible for maintaining legacy PHP endpoints
+
+Education
+Master of Information Technology, University of Technology Sydney, 2022
+Bachelor of Computer Science, University of Pune, 2019
+
+Projects
+Resume Ranker | Python, scikit-learn
+- Trained a TF-IDF ranking model on 10k resumes achieving 0.82 AUC
+
+Skills
+Python, TypeScript, React, FastAPI, SQL, PostgreSQL, Docker, AWS, Git, Pandas
+
+Certifications
+AWS Certified Cloud Practitioner

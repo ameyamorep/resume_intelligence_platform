@@ -1,0 +1,24 @@
+# Render Blueprint — deploys the FastAPI backend as a free web service.
+# In the Render dashboard: New + > Blueprint > point at this repo.
+services:
+  - type: web
+    name: resume-intel-api
+    runtime: python
+    plan: free
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: AI_PROVIDER
+        value: auto
+      - key: GEMINI_API_KEY
+        sync: false # set the value in the Render dashboard (never in the repo)
+      - key: GEMINI_MODEL
+        value: gemini-2.5-flash
+      - key: CORS_ORIGINS
+        value: https://YOUR-APP.vercel.app # update after the Vercel deploy
+      - key: DATABASE_URL
+        value: sqlite:///./resume_intel.db # ephemeral on free tier; see DEPLOYMENT.md

@@ -216,3 +216,13 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Project
+backend/.venv/
+backend/.env
+backend/resume_intel.db
+backend/__pycache__/
+**/__pycache__/
+frontend/node_modules/
+frontend/.next/
+frontend/next-env.d.ts
