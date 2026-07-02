@@ -164,14 +164,26 @@ def _call_gemini(user_prompt: str) -> tuple[str, str]:
             "generationConfig": {
                 "responseMimeType": "application/json",
                 "responseSchema": AI_SCHEMA,
-                "maxOutputTokens": 8000,
+                # Gemini 2.5 thinking tokens count against maxOutputTokens and can
+                # truncate the JSON mid-object. Structured critique doesn't need
+                # thinking here — disable it and leave generous output headroom.
+                "maxOutputTokens": 16384,
+                "thinkingConfig": {"thinkingBudget": 0},
             },
         },
         timeout=120.0,
     )
     resp.raise_for_status()
     data = resp.json()
-    text = data["candidates"][0]["content"]["parts"][0]["text"]
+    try:
+        candidate = data["candidates"][0]
+        text = candidate["content"]["parts"][0]["text"]
+    except (KeyError, IndexError):
+        reason = (data.get("candidates") or [{}])[0].get("finishReason", "unknown")
+        raise RuntimeError(f"Gemini returned no text (finishReason={reason})")
+    if candidate.get("finishReason") == "MAX_TOKENS":
+        raise RuntimeError("Gemini output hit MAX_TOKENS and was truncated — "
+                           "increase maxOutputTokens or shorten the input.")
     return text, s.gemini_model
 
 
